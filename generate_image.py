@@ -1,6 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
 
-
 def create_image(size, bgColor, message, font, fontColor):
     W, H = size
     image = Image.new('RGB', size, bgColor)
