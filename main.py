@@ -1,12 +1,12 @@
 import os
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, render_template
 from generate_image import generate_image
 
 app = Flask(__name__)
 
 
 def get_image_path(name):
-    img_dir = "/static/images"
+    img_dir = "./static/images"
     img_list = os.listdir(img_dir)
     img_path = os.path.join(img_dir, name)
     return img_path
@@ -33,4 +33,5 @@ def serve_static():
     imgName = get_image_path(text + ".png")
     if not os.path.exists(imgName):
         generate_image("images/badge.png", "fonts/Impact.ttf", text, imgName)
-    return f'<img alt="badge" src="{imgName}" />'
+    # return f'<img alt="badge" src="{imgName}" />'
+    return render_template("badge.html", text=text, imgName=imgName)
