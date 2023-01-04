@@ -7,6 +7,9 @@ app = Flask(__name__)
 
 def get_image_path(name):
     img_dir = "./static/images"
+    if not os.path.exists(img_dir):
+        os.mkdir("static")
+        os.mkdir("static/images")
     img_list = os.listdir(img_dir)
     img_path = os.path.join(img_dir, name)
     return img_path
