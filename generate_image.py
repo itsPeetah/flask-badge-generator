@@ -15,7 +15,7 @@ def get_scaled_font(fontName, text, imageWidth, maxSpanPercentage=0.75, starting
     fontsize = startingSize
     font = ImageFont.truetype(fontName, fontsize)
     while font.getsize(text)[0] < maxTextWidth:
-        # iterate until the text size is just larger than the criteria
+        # iterate until the text size is just larger than the target max size
         fontsize += 1
         font = ImageFont.truetype(fontName, fontsize)
     return font
